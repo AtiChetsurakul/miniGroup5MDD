@@ -1,5 +1,5 @@
 # miniGroup5MDD
-<h1><font color = 'coral'> THIS resp is created and used for study only in the university class only </font></h1>
+<h1><p style="color:coral"> THIS resp is created and used for study only in the university class only </p:w></h1>
 
 ## implemented 
 	- some table
