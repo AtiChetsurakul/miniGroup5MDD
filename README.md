@@ -6,3 +6,8 @@
 	- fkey constrain
 ## TODO
 	- CONSTRAIN on transction or some data that need to be.
+
+## DIAGRAM
+![pic](er_created.png)
+
+
