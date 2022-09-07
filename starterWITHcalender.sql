@@ -46,13 +46,15 @@ CREATE TABLE `listing`(
  );
  
  CREATE TABLE booking (
- `id` BIGINT NOT NULL AUTO_INCREMENT ,
- user_id BIGINT NOT NULL,
- listing_id BIGINT NOT NULL,
+`id` BIGINT NOT NULL AUTO_INCREMENT ,
+user_id BIGINT NOT NULL,
+listing_id BIGINT NOT NULL,
 start_date DATETIME NOT NULL,
 end_date DATETIME NOT NULL,
 no_of_people INT(100)  DEFAULT 1,
 amount DECIMAL(10,2) NOT NULL, 
+paid_to_host DECIMAL(10,2) NOT NULL, 
+fee_to_company DECIMAL(10,2) NOT NULL, 
 `status` ENUM('paid','pending','canceled'),
 payment_medium varchar(50) DEFAULT NULL,
 PRIMARY KEY (`id`),
@@ -61,6 +63,8 @@ KEY `fk_list_id` (`listing_id`),
 CONSTRAINT `fk_rent_by` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT `fk_list_id` FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
 ;
+
+
 
 CREATE TABLE review (
 id BIGINT NOT NULL AUTO_INCREMENT,
