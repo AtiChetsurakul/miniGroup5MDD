@@ -21,7 +21,7 @@ CREATE TABLE `user`(
 
 CREATE TABLE `listing`(
 `id` BIGINT NOT NULL AUTO_INCREMENT , 
-`type` ENUM('flat','house','condoetc') DEFAULT 'house',
+`type` ENUM('flat','house','condo','else') DEFAULT 'house',
  `share_space`  ENUM('share_space' , 'wholeplace') DEFAULT 'wholeplace',
  `location` varchar(50) NOT NULL ,
  max_occupancy INT(100)  DEFAULT NULL, 
@@ -39,7 +39,7 @@ CREATE TABLE `listing`(
  longitude Decimal(9,6) NULL,
  rate_per_day DECIMAL(10,2) DEFAULT NULL,
  `status` ENUM('suspend','list') DEFAULT 'list',
- approval_status ENUM('?','??','???') DEFAULT '??' ,
+ approval_status ENUM('y','n','new') DEFAULT 'new' ,
  PRIMARY KEY (`id`),
  KEY `fk_list_by` (`hostId`),
  CONSTRAINT `fk_list_by` FOREIGN KEY (`hostId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -58,7 +58,6 @@ amount DECIMAL(10,2) NOT NULL,
 payment_medium varchar(50) DEFAULT NULL,
 paid_to_host DECIMAL(10,2) NOT NULL, 
 fee_to_company DECIMAL(10,2) NOT NULL, 
-payment_medium varchar(50) DEFAULT NULL,
 PRIMARY KEY (`id`),
 KEY `fk_rent_by` (`user_id`),
 KEY `fk_list_id` (`listing_id`),
