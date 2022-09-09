@@ -44,11 +44,12 @@ CREATE TABLE `listing`(
  KEY `fk_list_by` (`hostId`),
  CONSTRAINT `fk_list_by` FOREIGN KEY (`hostId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
  );
- 
+
  CREATE TABLE booking (
  `id` BIGINT NOT NULL AUTO_INCREMENT ,
  user_id BIGINT NOT NULL,
  listing_id BIGINT NOT NULL,
+booking_date DATETIME NOT NULL,
 start_date DATETIME NOT NULL,
 end_date DATETIME NOT NULL,
 no_of_people INT(100)  DEFAULT 1,
