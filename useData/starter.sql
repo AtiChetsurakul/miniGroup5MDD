@@ -83,17 +83,42 @@ CONSTRAINT `fk_rent_by` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELE
 CONSTRAINT `fk_list_id` FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE `transaction`(
-`id` BIGINT NOT NULL AUTO_INCREMENT ,
+id BIGINT NOT NULL AUTO_INCREMENT ,
 booking_id BIGINT NOT NULL,
-`billing_status` ENUM('paid','pending','canceled'),
+billing_status ENUM('paid','pending','canceled'),
 payment_medium varchar(50) DEFAULT NULL,
-paid_to_host DECIMAL(10,2) NOT NULL, 
-fee_to_company DECIMAL(10,2) NOT NULL, 
+actual_price DECIMAL(10,2) NOT NULL, 
+base_price DECIMAL(10,2) NOT NULL, 
+no_of_checkin BIGINT NOT NULL,
+charge_per_checkin DECIMAL(10,2) NOT NULL, 
+company_charge DECIMAL(10,2) NOT NULL, 
+host_charge DECIMAL(10,2) NOT NULL, 
+total_calculated_amount DECIMAL(10,2) NOT NULL, 
 PRIMARY KEY (`id`),
-KEY `fk_paid_by` (`user_id`),
 KEY `fk_paid_room` (`booking_id`),
-CONSTRAINT fk_paid_by FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT fk_paid_room FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE);
+
+-- CREATE TABLE `transaction`(
+-- id BIGINT NOT NULL AUTO_INCREMENT ,
+-- booking_id BIGINT NOT NULL,
+-- billing_status ENUM('paid','pending','canceled'),
+-- payment_medium varchar(50) DEFAULT NULL,
+-- actual_price DECIMAL(10,2) NOT NULL, 
+-- base_price DECIMAL(10,2) NOT NULL, 
+-- no_of_checkin BIGINT NOT NULL,
+-- charge_per_checkin DECIMAL(10,2) NOT NULL, 
+-- company_charge DECIMAL(10,2) NOT NULL, 
+-- host_charge DECIMAL(10,2) NOT NULL, 
+-- total_calculated_amount DECIMAL(10,2) NOT NULL, 
+-- PRIMARY KEY (`id`),
+-- KEY `fk_paid_by` (`user_id`),
+-- KEY `fk_paid_room` (`booking_id`),
+-- CONSTRAINT fk_paid_by FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+-- CONSTRAINT fk_paid_room FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE);
+
+
+
+
 
 CREATE TABLE review (
 id BIGINT NOT NULL AUTO_INCREMENT,
