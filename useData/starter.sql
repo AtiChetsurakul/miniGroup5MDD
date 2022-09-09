@@ -84,7 +84,6 @@ CONSTRAINT `fk_list_id` FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`) O
 
 CREATE TABLE `transaction`(
 `id` BIGINT NOT NULL AUTO_INCREMENT ,
-user_id BIGINT NOT NULL,
 booking_id BIGINT NOT NULL,
 `billing_status` ENUM('paid','pending','canceled'),
 payment_medium varchar(50) DEFAULT NULL,
