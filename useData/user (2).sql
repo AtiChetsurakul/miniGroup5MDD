@@ -1,4 +1,4 @@
-USE airbnbmock;
+USE residex;
 insert into user (id, userName, firstName, lastName, phone_Number, passport_number, email, role, registerAt) values (1, 'hcullabine0', 'Holly-anne', 'Cullabine', '511-219-6720', '09-5245078', 'hcullabine0@ning.com', 'renter', '2021-10-13 17:31:15');
 insert into user (id, userName, firstName, lastName, phone_Number, passport_number, email, role, registerAt) values (2, null, 'Mei', 'Timlett', '666-623-0653', '26-8394467', 'mtimlett1@arstechnica.com', 'renter', '2021-09-12 21:25:21');
 insert into user (id, userName, firstName, lastName, phone_Number, passport_number, email, role, registerAt) values (3, 'mbarchrameev2', 'Mufinella', 'Barchrameev', '722-859-2405', '96-7511114', 'mbarchrameev2@woothemes.com', 'renter', '2021-11-01 12:15:45');

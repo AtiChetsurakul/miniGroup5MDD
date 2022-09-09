@@ -1,4 +1,4 @@
-USE airbnbmock;
+USE residex;
 insert into booking (id, user_id, listing_id, booking_date, no_of_days, no_of_people, amount, reserve_status, billing_status, payment_medium, start_date, end_date, paid_to_host, fee_to_company) values (1, 804, 99, '2022-02-26 16:07:25', 6, 2, 819.6, 'pending', 'pending', null, '2022-06-01 00:03:42', '2022-09-25 16:19:30', 778.62, 40.98);
 insert into booking (id, user_id, listing_id, booking_date, no_of_days, no_of_people, amount, reserve_status, billing_status, payment_medium, start_date, end_date, paid_to_host, fee_to_company) values (2, 833, 173, '2022-05-26 05:06:39', 1, 8, 647.0, 'pending', 'pending', null, '2022-04-08 20:26:50', '2022-01-12 02:30:05', 614.65, 32.35);
 insert into booking (id, user_id, listing_id, booking_date, no_of_days, no_of_people, amount, reserve_status, billing_status, payment_medium, start_date, end_date, paid_to_host, fee_to_company) values (3, 512, 238, '2022-06-30 05:33:11', 10, 4, 2610.8, 'rejected', 'paid', null, '2022-09-25 03:38:50', '2022-03-30 01:11:06', 2480.26, 130.54);

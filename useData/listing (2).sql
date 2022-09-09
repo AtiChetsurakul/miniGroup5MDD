@@ -1,4 +1,4 @@
-USE airbnbmock;
+USE residex;
 insert into listing (id, hostId, type, share_space, location, max_occupancy, no_of_bedroom, no_of_bathroom, has_tv, has_ac, has_heater, has_internet, updatedAt, address, latitude, longitude, approval_status, rate_per_day) values (1, '272', 'flat', 'wholeplace', 'Novopokrovka', null, 27, 6, false, false, false, true, null, '076 Hansons Hill', 55.6188565, 47.3879065, 'y', 1338.8);
 insert into listing (id, hostId, type, share_space, location, max_occupancy, no_of_bedroom, no_of_bathroom, has_tv, has_ac, has_heater, has_internet, updatedAt, address, latitude, longitude, approval_status, rate_per_day) values (2, '690', 'condo', 'share_space', 'Beipai', 20, 4, 19, true, false, true, false, null, '38560 Namekagon Lane', 25.6067597, -8.714498, 'y', 1192.0);
 insert into listing (id, hostId, type, share_space, location, max_occupancy, no_of_bedroom, no_of_bathroom, has_tv, has_ac, has_heater, has_internet, updatedAt, address, latitude, longitude, approval_status, rate_per_day) values (3, '486', 'house', 'share_space', 'Denton', 3, 30, 20, true, false, false, false, null, '456 Ilene Place', 53.455203, 40.7809019, 'new', 788.6);

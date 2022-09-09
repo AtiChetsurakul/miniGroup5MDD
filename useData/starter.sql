@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS airbnbmock;
-CREATE DATABASE airbnbmock;
-USE airbnbmock;
+DROP DATABASE IF EXISTS residex;
+CREATE DATABASE residex;
+USE residex;
 -- CREATE BY member of group 5 FOR miniproject on MDD course AT AIT thailand ON AUG 22
 CREATE TABLE `user`(
 `id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -45,27 +45,56 @@ CREATE TABLE `listing`(
  CONSTRAINT `fk_list_by` FOREIGN KEY (`hostId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
  );
 
- CREATE TABLE booking (
- `id` BIGINT NOT NULL AUTO_INCREMENT ,
- user_id BIGINT NOT NULL,
- listing_id BIGINT NOT NULL,
-booking_date DATETIME DEFAULT NOW(),
-no_of_days INT(100)  DEFAULT 1,
-start_date DATETIME NOT NULL,
-end_date DATETIME NOT NULL,
+--  CREATE TABLE booking (
+--  `id` BIGINT NOT NULL AUTO_INCREMENT ,
+--  user_id BIGINT NOT NULL,
+--  listing_id BIGINT NOT NULL,
+-- booking_date DATETIME DEFAULT NOW(),
+-- no_of_days INT(100)  DEFAULT 1,
+-- start_date DATETIME NOT NULL,
+-- end_date DATETIME NOT NULL,
+-- no_of_people INT(100)  DEFAULT 1,
+-- amount DECIMAL(10,2) NOT NULL, 
+-- `reserve_status` ENUM('approved','rejected','pending'),
+-- `billing_status` ENUM('paid','pending','canceled'),
+-- payment_medium varchar(50) DEFAULT NULL,
+-- paid_to_host DECIMAL(10,2) NOT NULL, 
+-- fee_to_company DECIMAL(10,2) NOT NULL, 
+-- PRIMARY KEY (`id`),
+-- KEY `fk_rent_by` (`user_id`),
+-- KEY `fk_list_id` (`listing_id`),
+-- CONSTRAINT `fk_rent_by` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+-- CONSTRAINT `fk_list_id` FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+-- ;
+
+CREATE TABLE booking (
+`id` BIGINT NOT NULL AUTO_INCREMENT ,
+user_id BIGINT NOT NULL,
+listing_id BIGINT NOT NULL,
+start_date DATE NOT NULL,
+end_date DATE NOT NULL,
 no_of_people INT(100)  DEFAULT 1,
 amount DECIMAL(10,2) NOT NULL, 
-`reserve_status` ENUM('approved','rejected','pending'),
+`reserve_status` ENUM('approved','rejected'),
+PRIMARY KEY (`id`),
+KEY `fk_rent_by` (`user_id`),
+KEY `fk_list_id` (`listing_id`),
+CONSTRAINT `fk_rent_by` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT `fk_list_id` FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`) ON DELETE CASCADE ON UPDATE CASCADE);
+
+CREATE TABLE `transaction`(
+`id` BIGINT NOT NULL AUTO_INCREMENT ,
+user_id BIGINT NOT NULL,
+booking_id BIGINT NOT NULL,
 `billing_status` ENUM('paid','pending','canceled'),
 payment_medium varchar(50) DEFAULT NULL,
 paid_to_host DECIMAL(10,2) NOT NULL, 
 fee_to_company DECIMAL(10,2) NOT NULL, 
 PRIMARY KEY (`id`),
-KEY `fk_rent_by` (`user_id`),
-KEY `fk_list_id` (`listing_id`),
-CONSTRAINT `fk_rent_by` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT `fk_list_id` FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-;
+KEY `fk_paid_by` (`user_id`),
+KEY `fk_paid_room` (`booking_id`),
+CONSTRAINT fk_paid_by FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT fk_paid_room FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE review (
 id BIGINT NOT NULL AUTO_INCREMENT,

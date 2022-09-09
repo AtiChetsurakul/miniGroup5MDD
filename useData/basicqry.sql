@@ -1,12 +1,12 @@
-USE airbnbmock;
+USE residex;
 SELECT * FROM user LIMIT 100;
-SELECT id as hostId FROM airbnbmock.user WHERE role = 'host';
-SELECT id as renterId FROM airbnbmock.user WHERE role = 'renter';
-SELECT id as adId FROM airbnbmock.user WHERE role = 'admin';
+SELECT id as hostId FROM residex.user WHERE role = 'host';
+SELECT id as renterId FROM residex.user WHERE role = 'renter';
+SELECT id as adId FROM residex.user WHERE role = 'admin';
 
-SELECT (SELECT count(id) FROM airbnbmock.user WHERE role = 'host') AS hostCount,
-(SELECT count(id)  FROM airbnbmock.user WHERE role = 'renter') AS hostCount,
-(SELECT count(id)  FROM airbnbmock.user WHERE role = 'admin') AS adminCount;
+SELECT (SELECT count(id) FROM residex.user WHERE role = 'host') AS hostCount,
+(SELECT count(id)  FROM residex.user WHERE role = 'renter') AS hostCount,
+(SELECT count(id)  FROM residex.user WHERE role = 'admin') AS adminCount;
 
 SELECT id FROM listing;
 
