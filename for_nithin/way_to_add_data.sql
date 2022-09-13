@@ -13,3 +13,9 @@ WHERE
     bk.reserve_status = 'approved';
     
  SELECT * FROM transaction;
+ 
+ -- TODO use this step to get `actual_price` from listing (rate_per_day)
+ -- then update :
+ -- 	the total price will be = (no_days*actual_price) - discount(we might not do `discount` yet)
+ -- 	company_charge is 0.XX(percentage u want) * total_price
+ -- 	host_charge is (1 - 0.XX(percentage u want)) * total_price
