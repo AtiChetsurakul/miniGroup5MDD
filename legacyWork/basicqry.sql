@@ -17,3 +17,5 @@ SELECT id,location,max_occupancy,has_tv,has_ac,hostId,address,rate_per_day
  ORDER BY rate_per_day;
  
  SELECT * FROM booking;
+ 
+ SELECT * FROM transaction;
