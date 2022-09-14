@@ -44,7 +44,7 @@ CREATE TABLE `listing`(
  approval_status ENUM('y','n','new') DEFAULT 'new' ,
  PRIMARY KEY (`id`),
  KEY `fk_list_by` (`hostId`),
- CONSTRAINT `fk_list_by` FOREIGN KEY (`hostId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+ CONSTRAINT `fk_list_by` FOREIGN KEY (`hostId`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
  );
 
 
@@ -61,8 +61,8 @@ end_date DATE NOT NULL,
 PRIMARY KEY (`id`),
 KEY `fk_rent_by` (`user_id`),
 KEY `fk_list_id` (`listing_id`),
-CONSTRAINT `fk_rent_by` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT `fk_list_id` FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`) ON DELETE CASCADE ON UPDATE CASCADE);
+CONSTRAINT `fk_rent_by` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+CONSTRAINT `fk_list_id` FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT);
 
 -- CREATE TABLE `transaction`(
 -- id BIGINT NOT NULL AUTO_INCREMENT ,
@@ -98,7 +98,7 @@ host_charge DECIMAL(10,2) DEFAULT NULL,
 -- total_calculated_amount DECIMAL(10,2) DEFAULT NULL, 
 PRIMARY KEY (`id`),
 UNIQUE KEY `fk_paid_room` (`booking_id`),
-CONSTRAINT fk_paid_room FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE);
+CONSTRAINT fk_paid_room FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT);
 
 
 
@@ -109,7 +109,7 @@ Rating INT(5) NULL,
 `comment` text  NULL,
 PRIMARY KEY (`id`),
 KEY `fk_booking_id` (`bookingId`),
-CONSTRAINT `fk_booking_id` FOREIGN KEY (`bookingId`) REFERENCES `booking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+CONSTRAINT `fk_booking_id` FOREIGN KEY (`bookingId`) REFERENCES `booking` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 
@@ -125,8 +125,8 @@ updatedAt DATETIME DEFAULT NULL,
 PRIMARY KEY (`id`),
 KEY `fk_source_id` (`sourceId`),
 KEY `fk_target_id` (`targetId`),
-CONSTRAINT `fk_source_id` FOREIGN KEY (`sourceId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT `fk_target_id` FOREIGN KEY (`targetId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+CONSTRAINT `fk_source_id` FOREIGN KEY (`sourceId`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+CONSTRAINT `fk_target_id` FOREIGN KEY (`targetId`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 USE residex;
